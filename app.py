@@ -44,18 +44,20 @@ def webhook():
                 message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
                 print message_text
                 message_data = get_message(message_text)
-                send_message(sender_id, message_data)
+               # send_message(sender_id, message_data)
     except Exception,e: 
         print str(e)
 
     return "ok", 200
 def get_message(incoming_msg):
-    q1= "what is alula?"
-    q2 ="is alula protective for my phone?"
+    q1= "Hello"
+    q2 ="Sounds good"
     if(incoming_msg.lower() in q1):
-        message_data = "Alula is the first phone case to hold, protect, and dispense your brith control pills!  You simply put your pills into the case every month and our app will remind you everyday at the optimal time to take them!"
+        message_data = "Good morning, Jordan! I’m the New York news channel chatbot, NY NEWSBOY, and I can send you the top news stories based on your interests each morning. Would you like that?"
+        send_message(sender_id, message_data)
     elif(incoming_msg.lower() in q2):
-        message_data = "Absolutely! Alula uses those same materials which are used in some of the best selling phone cases on the market."
+        message_data = "Great! Choose what time you would like to receive the updates."
+        send_button(sender_id, message_data)
     else:
         message_data = "Thanks for messaging us! We will get back to you shortly."
     return message_data
@@ -75,6 +77,53 @@ def send_message(recipient_id, message_text):
         },
         "message": {
             "text": message_text
+        }
+    })
+
+    r = requests.post("https://graph.facebook.com/v2.9/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
+    return "ok", 200
+
+def send_button(recipient_id, message_text):
+
+    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+
+    params = {
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+        "message": {
+            "text": message_text
+            "quick_replies":[
+            {
+            "content_type":"text",
+            "title":"First thing in the morning",
+            "payload":"first",
+          },
+          {
+            "content_type":"text",
+            "title":"During my lunch break",
+            "payload":"lunch",
+          },
+          {
+            "content_type":"text",
+            "title":"Evening roundup",
+            "payload":"evening",
+          },
+          {
+            "content_type":"text",
+            "title":"Breaking news alerts only",
+            "payload":"breaking",
+          }
+        ]
         }
     })
 
