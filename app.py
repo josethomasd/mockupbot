@@ -53,7 +53,7 @@ def get_message(incoming_msg):
     q1= "Hello"
     q2 ="Sounds good"
     if(incoming_msg.lower() in q1):
-        message_data = "Good morning, Jordan! I’m the New York news channel chatbot, NY NEWSBOY, and I can send you the top news stories based on your interests each morning. Would you like that?"
+        message_data = "Good morning, Jordan! I'm the New York news channel chatbot, NY NEWSBOY, and I can send you the top news stories based on your interests each morning. Would you like that?"
         send_message(sender_id, message_data)
     elif(incoming_msg.lower() in q2):
         message_data = "Great! Choose what time you would like to receive the updates."
