@@ -43,24 +43,23 @@ def webhook():
                 # the facebook ID of the person sending you the message 
                 message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
                 print message_text
-                message_data = get_message(message_text)
+                q1= "Hello"
+                q2 ="Sounds good"
+                if(incoming_msg.lower() in q1):
+                    message_data = "Good morning, Jordan! I'm the New York news channel chatbot, NY NEWSBOY, and I can send you the top news stories based on your interests each morning. Would you like that?"
+                    send_message(sender_id, message_data)
+                elif(incoming_msg.lower() in q2):
+                    message_data = "Great! Choose what time you would like to receive the updates."
+                    send_button(sender_id, message_data)
+                else:
+                    message_data = "Thanks for messaging us! We will get back to you shortly."
+
                # send_message(sender_id, message_data)
     except Exception,e: 
         print str(e)
 
     return "ok", 200
-def get_message(incoming_msg):
-    q1= "Hello"
-    q2 ="Sounds good"
-    if(incoming_msg.lower() in q1):
-        message_data = "Good morning, Jordan! I'm the New York news channel chatbot, NY NEWSBOY, and I can send you the top news stories based on your interests each morning. Would you like that?"
-        send_message(sender_id, message_data)
-    elif(incoming_msg.lower() in q2):
-        message_data = "Great! Choose what time you would like to receive the updates."
-        send_button(sender_id, message_data)
-    else:
-        message_data = "Thanks for messaging us! We will get back to you shortly."
-    return message_data
+
 def send_message(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
@@ -101,7 +100,7 @@ def send_button(recipient_id, message_text):
             "id": recipient_id
         },
         "message": {
-            "text": message_text
+            "text": message_text,
             "quick_replies":[
             {
             "content_type":"text",
