@@ -42,7 +42,7 @@ def webhook():
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]
                 # the facebook ID of the person sending you the message 
                 message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
-                print "x"
+                print message_text
                 q1= "Hello"
                 q2 ="Sounds good"
                 if(message_text.lower() in q1):
