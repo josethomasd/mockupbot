@@ -45,8 +45,10 @@ def webhook():
                 print message_text
                 q1= "Hello"
                 q2 ="Sounds good"
+                send_state(sender_id)
+                time.sleep(10)
                 if(message_text=='Yes'):
-                    message_data = "Great! Choose what time you would like to receive the updates."
+                    message_data = "Can you tell me why? Simply choose the reason that most closely matches your reasons for returning this product. For multiple reasons, just type the numbers separated by commas, like so: 1, 3"
                     send_button(sender_id, message_data)
                # send_message(sender_id, message_data)
     except Exception,e: 
@@ -115,12 +117,40 @@ def send_button(recipient_id, message_text):
             "content_type":"text",
             "title":"Too big",
             "payload":"breaking",
-          }
+          },
+         {
+            "content_type":"text",
+            "title":"Not what I expected",
+            "payload":"breaking",
+          } 
         ]
         }
     })
 
     r = requests.post("https://graph.facebook.com/v2.9/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
+    return "ok", 200
+
+def send_state(recipient_id):
+
+    log("sending state to {recipient}: ".format(recipient=recipient_id))
+
+    params = {
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+        "sender_action":"typing_on"
+
+    })
+    r = requests.post("https://graph.facebook.com/v2.8/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
