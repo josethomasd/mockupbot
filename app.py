@@ -45,10 +45,7 @@ def webhook():
                 print message_text
                 q1= "Hello"
                 q2 ="Sounds good"
-                if(message_text.lower() in q1):
-                    message_data = "Good morning, Jordan! I'm the New York news channel chatbot, NY NEWSBOY, and I can send you the top news stories based on your interests each morning. Would you like that?"
-                    send_message(sender_id, message_data)
-                else:
+                if(message_text=='Yes'):
                     message_data = "Great! Choose what time you would like to receive the updates."
                     send_button(sender_id, message_data)
                # send_message(sender_id, message_data)
@@ -101,22 +98,22 @@ def send_button(recipient_id, message_text):
             "quick_replies":[
             {
             "content_type":"text",
-            "title":"First thing in the morning",
+            "title":"I changed my mind",
             "payload":"first",
           },
           {
             "content_type":"text",
-            "title":"During my lunch break",
+            "title":"I ordered it by mistake",
             "payload":"lunch",
           },
           {
             "content_type":"text",
-            "title":"Evening roundup",
+            "title":"Too small",
             "payload":"evening",
           },
           {
             "content_type":"text",
-            "title":"Breaking news alerts only",
+            "title":"Too big",
             "payload":"breaking",
           }
         ]
