@@ -118,14 +118,14 @@ def send_button(recipient_id, message_text):
             "title":"Too big",
             "payload":"breaking",
           },
-         {
+          {
             "content_type":"text",
             "title":"Not what I expected",
             "payload":"breaking",
           },
           {
             "content_type":"text",
-            "title":"I don’t need it anymore",
+            "title":"I don't need it anymore",
             "payload":"breaking",
           }  
         ]
