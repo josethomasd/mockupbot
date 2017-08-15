@@ -46,7 +46,7 @@ def webhook():
                 q1= "Hello"
                 q2 ="Sounds good"
                 send_state(sender_id)
-                time.sleep(10)
+                time.sleep(5)
                 if(message_text=='Yes'):
                     message_data = "Can you tell me why? Simply choose the reason that most closely matches your reasons for returning this product. For multiple reasons, just type the numbers separated by commas, like so: 1, 3"
                     send_button(sender_id, message_data)
@@ -122,7 +122,12 @@ def send_button(recipient_id, message_text):
             "content_type":"text",
             "title":"Not what I expected",
             "payload":"breaking",
-          } 
+          },
+          {
+            "content_type":"text",
+            "title":"I don’t need it anymore",
+            "payload":"breaking",
+          }  
         ]
         }
     })
