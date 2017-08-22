@@ -4,14 +4,39 @@ import sys, time
 from flask import jsonify
 from flask import Flask, request, redirect, url_for, flash
 
+from flask_sqlalchemy import SQLAlchemy
+
 from flask_heroku import Heroku
 
-app = Flask(__name__)
-heroku = Heroku(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ahkxbkuocpywok:b5e4d08bf346c284467caa5da3a429332d14025ecfe4322b6129cc56588746eb@ec2-54-163-233-201.compute-1.amazonaws.com:5432/dcemq8m371umpf'
 
+heroku = Heroku(app)
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    __tablename__ = "users"
+    id = db.Column(db.Integer, primary_key=True)
+    countval = db.Column(db.Integer, unique=True)
+
+    def __init__(self, countval):
+        self.countval = countval
+    def __repr__(self):
+        return '<title {}'.format(self.name)
+
+    def is_active(self):
+        """True, as all users are active."""
+        return True
+
+    def get_id(self):
+        """Return the email address to satisfy Flask-Login's requirements."""
+        return self.countval
 
 @app.route("/")
 def index():
+    countval = 0
+    reg = User(countval)
+    db.session.add(reg)
+    db.session.commit()
     return "Hello World"
 
 @app.route('/webhook', methods=['GET'])
@@ -29,7 +54,7 @@ def verify():
 def webhook():
 
     # endpoint for processing incoming messaging events
-
+    user = User.query.all()
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
@@ -42,14 +67,12 @@ def webhook():
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]
                 # the facebook ID of the person sending you the message 
                 message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
-                print message_text
-                q1= "Hello"
-                q2 ="Sounds good"
-                send_state(sender_id)
-                time.sleep(5)
-                if(message_text=='Yes'):
-                    message_data = "Can you tell me why? Simply choose the reason that most closely matches your reasons for returning this product. For multiple reasons, just type the numbers separated by commas, like so: 1, 3"
-                    send_button(sender_id, message_data)
+                if(user.countval==0):
+                    message_data = "Yo"
+                else:
+                    message_data = "Yoyo"
+                send_message(sender_id, message_data)
+                    #send_button(sender_id, message_data)
                # send_message(sender_id, message_data)
     except Exception,e: 
         print str(e)
