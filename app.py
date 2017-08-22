@@ -36,7 +36,7 @@ class User(db.Model):
 
 @app.route("/")
 def index():
-    user = User.query.all()
+    user = User.query.filter_by(id=1).first()
     user.countval = 0
     db.session.commit()
     return "Hello World"
