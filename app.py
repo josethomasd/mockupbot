@@ -36,9 +36,8 @@ class User(db.Model):
 
 @app.route("/")
 def index():
-    countval = 0
-    reg = User(countval)
-    db.session.add(reg)
+    user = User.query.all()
+    user.countval = 0
     db.session.commit()
     return "Hello World"
 
