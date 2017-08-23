@@ -89,7 +89,7 @@ def webhook():
                 elif(user.countval==8):
                     message_data = "OK, I just want to confirm that you want to exchange the Salvatore Ferragamo Black Patent Flats with Grosgrain Bow in Size 8 for Size 8.5."
                 elif(user.countval==9):
-                    message_data = "Do you still have the shipping label that was sent to you with your order?"
+                    message_data = "OK, just a few more questions until I can complete this exchange for you. Do you still have the box that was sent to you with your order?"
                 elif(user.countval==10):
                     message_data = "Don't worry, I will email a new shipping label to myemail@gmail.com for the exchange. Please send us back the Salvatore Ferragamo Black Patent Flats with Grosgrain Bow Size 8 shoes in this box with the shipping label I am emailing you now."
                 elif(user.countval==11):
