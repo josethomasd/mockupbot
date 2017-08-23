@@ -24,7 +24,7 @@ class User(db.Model):
     def __init__(self, countval):
         self.countval = countval
     def __repr__(self):
-        return '<title {}'.format(self.name)
+        return '<title {}'.format(self.countval)
 
     def is_active(self):
         """True, as all users are active."""
