@@ -75,6 +75,8 @@ def webhook():
                 else:
                     message_data = "Yoyo"
                 send_message(sender_id, message_data)
+                user.countval = user.countval+1
+                db.session.commit()
                     #send_button(sender_id, message_data)
                # send_message(sender_id, message_data)
     except Exception,e: 
