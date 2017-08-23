@@ -93,7 +93,7 @@ def webhook():
                 elif(user.countval==10):
                     message_data = "Don't worry, I will email a new shipping label to myemail@gmail.com for the exchange. Please send us back the Salvatore Ferragamo Black Patent Flats with Grosgrain Bow Size 8 shoes in this box with the shipping label I am emailing you now."
                 elif(user.countval==11):
-                    message_data = "Do you want me to send the Salvatore Ferragamo Black Patent Flats with Grosgrain Bow in Size 8.5 to the same address as the original order? Type ‘yes' if you do, ‘no' if you want me to send them to a new address."
+                    message_data = "Do you want me to send the Salvatore Ferragamo Black Patent Flats with Grosgrain Bow in Size 8.5 to the same address as the original order? Type 'yes' if you do, 'no' if you want me to send them to a new address."
                 elif(user.countval==12):
                     message_data = "OK, can you confirm the address I have is correct?\n\nJessica Stanfield\n123 Pine Heights Blvd.\nNiceville, CA 12345"
                 elif(user.countval==13):
