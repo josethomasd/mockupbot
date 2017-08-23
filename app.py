@@ -99,7 +99,7 @@ def webhook():
                 elif(user.countval==13):
                     message_data = " Thank you. Once the package carrier scans the return label on your original order, we will automatically send you your exchange order Salvatore Ferragamo Black Patent Flats with Grosgrain Bow Size 8.5."
                 elif(user.countval==14):
-                    message_data = "I'm happy to help! Is there anything else I can do for you? Just type ‘yes' and what I can help you with, or ‘bye'. "
+                    message_data = "I'm happy to help! Is there anything else I can do for you? Just type 'yes' and what I can help you with, or 'bye'. "
                 else:
                     message_data = "Have a great day, Jessica!  :)"
                 if(user.countval==6):
