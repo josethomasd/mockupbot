@@ -91,14 +91,16 @@ def webhook():
                 elif(user.countval==9):
                     message_data = "OK, just a few more questions until I can complete this exchange for you. Do you still have the box that was sent to you with your order?"
                 elif(user.countval==10):
+                    message_data = "Do you still have the shipping label that was sent to you with your order?"
+                elif(user.countval==11)
                     message_data = "Don't worry, I will email a new shipping label to myemail@gmail.com for the exchange. Please send us back the Salvatore Ferragamo Black Patent Flats with Grosgrain Bow Size 8 shoes in this box with the shipping label I am emailing you now."
-                elif(user.countval==11):
-                    message_data = "Do you want me to send the Salvatore Ferragamo Black Patent Flats with Grosgrain Bow in Size 8.5 to the same address as the original order? Type 'yes' if you do, 'no' if you want me to send them to a new address."
                 elif(user.countval==12):
-                    message_data = "OK, can you confirm the address I have is correct?\n\nJessica Stanfield\n123 Pine Heights Blvd.\nNiceville, CA 12345"
+                    message_data = "Do you want me to send the Salvatore Ferragamo Black Patent Flats with Grosgrain Bow in Size 8.5 to the same address as the original order? Type 'yes' if you do, 'no' if you want me to send them to a new address."
                 elif(user.countval==13):
-                    message_data = " Thank you. Once the package carrier scans the return label on your original order, we will automatically send you your exchange order Salvatore Ferragamo Black Patent Flats with Grosgrain Bow Size 8.5."
+                    message_data = "OK, can you confirm the address I have is correct?\n\nJessica Stanfield\n123 Pine Heights Blvd.\nNiceville, CA 12345"
                 elif(user.countval==14):
+                    message_data = " Thank you. Once the package carrier scans the return label on your original order, we will automatically send you your exchange order Salvatore Ferragamo Black Patent Flats with Grosgrain Bow Size 8.5."
+                elif(user.countval==15):
                     message_data = "I'm happy to help! Is there anything else I can do for you? Just type 'yes' and what I can help you with, or 'bye'. "
                 else:
                     message_data = "Have a great day, Jessica!  :)"
