@@ -57,7 +57,7 @@ def webhook():
 
     # endpoint for processing incoming messaging events
     user = User.query.filter_by(id=1).first()
-    print user
+    log(user)
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
